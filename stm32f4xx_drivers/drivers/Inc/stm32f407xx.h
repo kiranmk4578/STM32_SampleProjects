@@ -8,8 +8,9 @@
 #ifndef INC_STM32F407XX_H_
 #define INC_STM32F407XX_H_
 
-#include<stdint.h>
 
+#include<stdint.h>
+#define __vo volatile
 // Base addresses of Memory sections
 #define FLASH_BASEADDR						0x08000000U // Base address of internal Flash memory
 #define SRAM1_BASEADDR 						0x20000000U // Base address of main internal SRAM1 (112 KB)
@@ -78,6 +79,41 @@
 #define SPI1_TXCRCR     (SPI1_BASEADDR + 0x18)  // TX CRC Register
 #define SPI1_I2SCFGR    (SPI1_BASEADDR + 0x1C)  // I2S Configuration Register
 #define SPI1_I2SPR      (SPI1_BASEADDR + 0x20)  // I2S Prescaler Register
+
+
+
+/*************peripheral register definition structures***************/
+
+/*Note : Registers of a peripheral are specific to mcu
+* For example : Number of Registers of SPI peripheral of STM32F4x family of MCUs may be different(more or less)
+* Compared to number of registers of SPI peripheral of STM32Lx or STM32F0x family of MCUs
+* Please check your Device RM
+*/
+
+typedef struct{
+
+	__vo uint32_t MODER;     // 0x00: Pin mode (input, output, alt, analog)
+	__vo int32_t OTYPER;    // 0x04: Output type (push-pull or open-drain)
+	__vo uint32_t OSPEEDR;   // 0x08: Output speed (low, medium, high, very high)
+	__vo uint32_t PUPDR;     // 0x0C: Pull-up / Pull-down configuration
+	__vo uint32_t IDR;       // 0x10: Input data register (read pin state)
+	__vo uint32_t ODR;       // 0x14: Output data register (write pin state)
+	__vo uint32_t BSRR;      // 0x18: Bit set/reset register (atomic set/reset)
+	__vo uint32_t LCKR;      // 0x1C: Configuration lock register (lock settings)
+	__vo uint32_t AFR[2];    // 0x20-0x24: Alternate function registers (AFR[0]=pins 0-7(Low register), AFR[1]=pins 8-15(High register))
+
+} GPIO_RegDef_t;
+
+
+
+
+
+
+
+
+
+
+
 
 
 #endif /* INC_STM32F407XX_H_ */
