@@ -193,6 +193,58 @@ typedef struct{
 #define USART1_PCLK_EN() 	( RCC->APB2ENR |= (1 << 4) ) // Enable clock for USART1 peripheral
 #define USART6_PCLK_EN() 	( RCC->APB2ENR |= (1 << 5) ) // Enable clock for USART6 peripheral
 
+/*
+* Clock Enable Macros for SYSCFG peripherals
+*/
+
+#define SYSCFG_PCLK_EN() 	( RCC->APB2ENR |= (1 << 14) ) // Enable clock for SYSCFG peripheral
+
+
+/*************************************************************************************************/
+
+/*
+* Clock Disable Macros for GPIOx peripherals
+*/
+
+#define GPIOA_PCLK_DI()   ( RCC->AHB1ENR &= ~(1 << 0) )   // Disable GPIOA clock
+#define GPIOB_PCLK_DI()   ( RCC->AHB1ENR &= ~(1 << 1) )   // Disable GPIOB clock
+#define GPIOC_PCLK_DI()   ( RCC->AHB1ENR &= ~(1 << 2) )   // Disable GPIOC clock
+#define GPIOD_PCLK_DI()   ( RCC->AHB1ENR &= ~(1 << 3) )   // Disable GPIOD clock
+#define GPIOE_PCLK_DI()   ( RCC->AHB1ENR &= ~(1 << 4) )   // Disable GPIOE clock
+
+/*
+* Clock Disable Macros for I2Cx peripherals
+*/
+#define I2C1_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 21) ) //  Disable clock for I2C1 peripheral
+#define I2C2_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 22) ) //  Disable clock for I2C2 peripheral
+#define I2C3_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 23) ) //  Disable clock for I2C3 peripheral
+
+/*
+* Clock Disable Macros for SPIx peripherals
+*/
+
+#define SPI2_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 14) ) // Disable clock for SPI2 peripheral
+#define SPI3_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 15) ) // Disable clock for SPI3 peripheral
+
+/*
+* Clock Disable Macros for USARTx peripherals
+*/
+
+#define USART2_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 17) ) // Disable clock for USART2 peripheral
+#define USART3_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 18) ) // Disable clock for USART3 peripheral
+
+#define USART1_PCLK_DI() 	( RCC->APB2ENR &= ~(1 << 4) ) // Disable clock for USART1 peripheral
+#define USART6_PCLK_DI() 	( RCC->APB2ENR &= ~(1 << 5) ) // Disable clock for USART6 peripheral
+
+/*
+* Clock Disable Macros for SYSCFG peripherals
+*/
+
+#define SYSCFG_PCLK_DI() 	( RCC->APB2ENR &= ~(1 << 14) ) // Disable clock for SYSCFG peripheral
+
+
+
+
 
 
 
