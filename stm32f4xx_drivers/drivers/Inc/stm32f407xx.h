@@ -158,6 +158,42 @@ typedef struct{
 #define RCC 			((RCC_RegDef_t*)RCC_BASEADDR) // Pointer(address) of data type RCC_RegDef_t* to RCC register base address
 
 
+/*
+* Clock Enable Macros for GPIOx peripherals
+*/
+
+#define GPIOA_PCLK_EN() 	( RCC->AHB1ENR |= (1 << 0) ) // Enable clock for GPIOA peripheral
+#define GPIOB_PCLK_EN() 	( RCC->AHB1ENR |= (1 << 1) ) // Enable clock for GPIOB peripheral
+#define GPIOC_PCLK_EN() 	( RCC->AHB1ENR |= (1 << 2) ) // Enable clock for GPIOC peripheral
+#define GPIOD_PCLK_EN() 	( RCC->AHB1ENR |= (1 << 3) ) // Enable clock for GPIOD peripheral
+#define GPIOE_PCLK_EN() 	( RCC->AHB1ENR |= (1 << 4) ) // Enable clock for GPIOE peripheral
+
+/*
+* Clock Enable Macros for I2Cx peripherals
+*/
+#define I2C1_PCLK_EN() 	( RCC->APB1ENR |= (1 << 21) ) // Enable clock for I2C1 peripheral
+#define I2C2_PCLK_EN() 	( RCC->APB1ENR |= (1 << 22) ) // Enable clock for I2C2 peripheral
+#define I2C3_PCLK_EN() 	( RCC->APB1ENR |= (1 << 23) ) // Enable clock for I2C3 peripheral
+
+
+/*
+* Clock Enable Macros for SPIx peripherals
+*/
+
+#define SPI2_PCLK_EN() 	( RCC->APB1ENR |= (1 << 14) ) // Enable clock for SPI2 peripheral
+#define SPI3_PCLK_EN() 	( RCC->APB1ENR |= (1 << 15) ) // Enable clock for SPI3 peripheral
+
+/*
+* Clock Enable Macros for USARTx peripherals
+*/
+
+#define USART2_PCLK_EN() 	( RCC->APB1ENR |= (1 << 17) ) // Enable clock for USART2 peripheral
+#define USART3_PCLK_EN() 	( RCC->APB1ENR |= (1 << 18) ) // Enable clock for USART3 peripheral
+
+#define USART1_PCLK_EN() 	( RCC->APB2ENR |= (1 << 4) ) // Enable clock for USART1 peripheral
+#define USART6_PCLK_EN() 	( RCC->APB2ENR |= (1 << 5) ) // Enable clock for USART6 peripheral
+
+
 
 
 
