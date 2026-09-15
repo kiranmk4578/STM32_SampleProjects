@@ -50,30 +50,49 @@ typedef struct
 /*
  * Peripheral Clock setup
  */
-void GPIO_PeripheralClockControl(void);
+// Enable or disable the clock for a given GPIO port
+void GPIO_PeripheralClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
 
 
 /*
  * Init and De-Init
  */
-void GPIO_Init(void);
-void GPIO_DeInit(void);
+// Configure a GPIO pin with the given settings
+void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
+
+// Reset all registers of the given GPIO port
+void GPIO_DeInit(GPIO_RegDef_t *pGPIOx);
 
 
 /*
  * Data read and write
  */
-void GPIO_ReadFromInputPin(void);
-void GPIO_ReadFromInputPort(void);
-void GPIO_WriteToOutputPin(void);
-void GPIO_WriteToOutputPort(void);
-void GPIO_ToggleOutputPin(void);
+// Read the logic value (0/1) from a specific pin
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+
+// Read the 16bit input value of the entire port
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx);
+
+// Write a logic value (0/1) to a specific pin
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
+
+// Write a 16bit value to all pins of the port
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value);
+
+// Flip the current output state of a specific pin
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+
 
 /*
  * IRQ Configuration and ISR handling
  */
-void GPIO_IRQConfig(void);
-void GPIO_IRQHandling(void);
+
+// Configure NVIC interrupt number, priority, and enable/disable
+void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi);
+
+// Handle interrupt event for the given GPIO pin
+void GPIO_IRQHandling(uint8_t PinNumber);
+
 
 
 
