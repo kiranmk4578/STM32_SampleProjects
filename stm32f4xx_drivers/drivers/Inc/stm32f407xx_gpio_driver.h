@@ -41,6 +41,34 @@ typedef struct
 
 }GPIO_Handle_t;
 
+/*
+ * GPIO pin possible modes
+ */
+#define GPIO_MODE_IN      0   // Pin configured as input
+#define GPIO_MODE_OUT     1   // Pin configured as output
+#define GPIO_MODE_ALTFN   2   // Pin configured for alternate function
+#define GPIO_MODE_ANALOG  3   // Pin configured as analog
+#define GPIO_MODE_IT_FT   4   // Interrupt on falling edge trigger
+#define GPIO_MODE_IT_RT   5   // Interrupt on rising edge trigger
+#define GPIO_MODE_IT_RFT  6   // Interrupt on both rising and falling edges
+
+/*GPIO pin possible output types
+ *
+ */
+#define GPIO_OP_TYPE_PP   0   // Push-pull output type
+#define GPIO_OP_TYPE_OD   1   // Open-drain output type
+
+/*GPIO pin possible output speeds
+ *
+ */
+#define GPIO_SPEED_LOW      0   // Low speed (slow signal transition)
+#define GPIO_SPEED_MEDIUM   1   // Medium speed (moderate switching)
+#define GPIO_SPEED_FAST     2   // Fast speed (quick signal changes)
+#define GPIO_SPEED_HIGH     3   // Very high speed (maximum switching rate)
+
+
+
+
 
 /**************************************************************************************************************************
  * 								APIs supported by this driver
@@ -57,7 +85,7 @@ void GPIO_PeripheralClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi);
 /*
  * Init and De-Init
  */
-// Configure a GPIO pin with the given settings
+// Configure a GPIO pin of given GPIO port with the given settings
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
 
 // Reset all registers of the given GPIO port
