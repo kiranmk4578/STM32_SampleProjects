@@ -244,12 +244,13 @@ typedef struct{
 
 //some generic MACROs
 
-#define ENABLE 			1
-#define DISABLE			0
-#define SET				ENABLE
-#define RESET			DISABLE
-#define GPIO_PIN_SET 	1
-#define GPIO_PIN_RESET 	0
+#define ENABLE          1   	// Enable state
+#define DISABLE         0   	// Disable state
+#define SET             ENABLE  // Alias for enable
+#define RESET           DISABLE // Alias for disable
+#define GPIO_PIN_SET    1   	// GPIO pin logic high
+#define GPIO_PIN_RESET  0   	// GPIO pin logic low
+
 
 
 
