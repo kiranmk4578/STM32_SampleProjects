@@ -91,6 +91,16 @@ void GPIO_PeripheralClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
  ***************************************************************/
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 {
+	//1. configure the mode of gpio pin
+
+	//2. configure the speed
+
+	//3. configure the pull up/pull down settings
+
+	//4. configure the output type
+
+	//5. configure the alt functionality
+
 
 }
 
