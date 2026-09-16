@@ -39,3 +39,6 @@ temp = 2 << 2 // 2 left shift by 2th position
                                                      8 4 2 1
 //In binary: |0000 0000|0000 0000|0000 0000|0 0 0 0  1 0 0 0|
 
+//Now store this value in 32bit variable temp(because MODER register is 32bit size)
+// copy the value in temp to MODER register 
+
