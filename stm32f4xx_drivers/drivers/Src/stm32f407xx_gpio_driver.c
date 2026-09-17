@@ -153,6 +153,27 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
  ***************************************************************/
 void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
 {
+	if(pGPIOx == GPIOA)
+	{
+		GPIOA_REGISTER_RESET();
+	}
+	else if(pGPIOx == GPIOB)
+	{
+		GPIOA_REGISTER_RESET();
+	}
+	else if(pGPIOx == GPIOC)
+	{
+		GPIOA_REGISTER_RESET();
+	}
+	else if(pGPIOx == GPIOD)
+	{
+		GPIOA_REGISTER_RESET();
+	}
+	else if(pGPIOx == GPIOE)
+	{
+		GPIOA_REGISTER_RESET();
+	}
+
 
 }
 

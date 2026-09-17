@@ -52,3 +52,8 @@ are already reset or 0)
 bitwise OR. 
 For eg: pGPIOHandle->pGPIOx->MODER &= ~(3 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // Register &= ~(1 << pos);
 
+
+
+
+#define GPIOA_REGISTER_RESET() do { (RCC->AHB1RSTR |= (1 << 0)); RCC->AHB1RSTR &= ~(1 << 0); } while(0) // Reset registers of GPIOA peripheral
+#define GPIOA_REGISTER_RESET() do{ ( RCC->AHB1RSTR |= (1 << 0)); RCC->AHB1RSTR &= ~(1 << 0)); }while(0)//reset registers of GPIOA peripheral

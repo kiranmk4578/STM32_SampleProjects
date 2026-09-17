@@ -242,6 +242,16 @@ typedef struct{
 
 #define SYSCFG_PCLK_DI() 	( RCC->APB2ENR &= ~(1 << 14) ) // Disable clock for SYSCFG peripheral
 
+/*
+* MACROs to reset GPIOx peripherals
+*/
+#define GPIOA_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 0)); RCC->AHB1RSTR &= ~(1 << 0); }while(0)//reset registers of GPIOA peripheral
+#define GPIOB_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 1)); RCC->AHB1RSTR &= ~(1 << 1); }while(0)//reset registers of GPIOB peripheral
+#define GPIOC_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 2)); RCC->AHB1RSTR &= ~(1 << 2); }while(0)//reset registers of GPIOC peripheral
+#define GPIOD_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 3)); RCC->AHB1RSTR &= ~(1 << 3); }while(0)//reset registers of GPIOD peripheral
+#define GPIOE_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 4)); RCC->AHB1RSTR &= ~(1 << 4); }while(0)//reset registers of GPIOE peripheral
+
+
 //some generic MACROs
 
 #define ENABLE          1   	// Enable state
