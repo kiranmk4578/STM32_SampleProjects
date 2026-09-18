@@ -11,6 +11,7 @@
 
 #include<stdint.h>
 #define __vo volatile
+
 // Base addresses of Memory sections
 #define FLASH_BASEADDR						0x08000000U // Base address of internal Flash memory
 #define SRAM1_BASEADDR 						0x20000000U // Base address of main internal SRAM1 (112 KB)
@@ -264,15 +265,7 @@ typedef struct{
 
 
 
-
-
-
-
-
-
-
-
-
+//#include "stm32f407xx_gpio_driver.h"
 
 
 
