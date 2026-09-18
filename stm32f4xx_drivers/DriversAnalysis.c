@@ -1,5 +1,4 @@
 
-
 //MODE register
 31   30 | 29   28 | 27   26 | 25   24 | 23   22 | 21   20 | 19   18 | 17   16 |
 MODER15 | MODER14 | MODER13 | MODER12 | MODER11 | MODER10 | MODER9  | MODER8  |
@@ -55,5 +54,3 @@ For eg: pGPIOHandle->pGPIOx->MODER &= ~(3 << pGPIOHandle->GPIO_PinConfig.GPIO_Pi
 
 
 
-#define GPIOA_REGISTER_RESET() do { (RCC->AHB1RSTR |= (1 << 0)); RCC->AHB1RSTR &= ~(1 << 0); } while(0) // Reset registers of GPIOA peripheral
-#define GPIOA_REGISTER_RESET() do{ ( RCC->AHB1RSTR |= (1 << 0)); RCC->AHB1RSTR &= ~(1 << 0)); }while(0)//reset registers of GPIOA peripheral

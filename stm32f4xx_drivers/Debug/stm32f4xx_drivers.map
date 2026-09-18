@@ -286,20 +286,20 @@ Discarded input sections
  .text.GPIO_DeInit
                 0x00000000       0xd4 ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_ReadFromInputPin
-                0x00000000       0x1a ./drivers/Src/stm32f407xx_gpio_driver.o
+                0x00000000       0x2c ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_ReadFromInputPort
-                0x00000000       0x16 ./drivers/Src/stm32f407xx_gpio_driver.o
- .text.GPIO_WriteToOutputPin
                 0x00000000       0x1c ./drivers/Src/stm32f407xx_gpio_driver.o
+ .text.GPIO_WriteToOutputPin
+                0x00000000       0x4a ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_WriteToOutputPort
-                0x00000000       0x18 ./drivers/Src/stm32f407xx_gpio_driver.o
+                0x00000000       0x1e ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_ToggleOutputPin
                 0x00000000       0x18 ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_IRQConfig
                 0x00000000       0x1e ./drivers/Src/stm32f407xx_gpio_driver.o
  .text.GPIO_IRQHandling
                 0x00000000       0x16 ./drivers/Src/stm32f407xx_gpio_driver.o
- .debug_info    0x00000000      0x5d9 ./drivers/Src/stm32f407xx_gpio_driver.o
+ .debug_info    0x00000000      0x5f8 ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_abbrev  0x00000000      0x142 ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_aranges
                 0x00000000       0x68 ./drivers/Src/stm32f407xx_gpio_driver.o
@@ -315,8 +315,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x1df ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_macro   0x00000000      0x23d ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_macro   0x00000000       0xc4 ./drivers/Src/stm32f407xx_gpio_driver.o
- .debug_line    0x00000000      0x70b ./drivers/Src/stm32f407xx_gpio_driver.o
- .debug_str     0x00000000     0x51a1 ./drivers/Src/stm32f407xx_gpio_driver.o
+ .debug_line    0x00000000      0x749 ./drivers/Src/stm32f407xx_gpio_driver.o
+ .debug_str     0x00000000     0x51a7 ./drivers/Src/stm32f407xx_gpio_driver.o
  .comment       0x00000000       0x44 ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_frame   0x00000000      0x1a0 ./drivers/Src/stm32f407xx_gpio_driver.o
  .ARM.attributes
