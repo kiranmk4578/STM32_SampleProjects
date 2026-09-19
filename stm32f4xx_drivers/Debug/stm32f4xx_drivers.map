@@ -872,18 +872,18 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x00000032       0x4c ./drivers/Src/stm32f407xx_gpio_driver.o
 
-.debug_macro    0x00000000     0x1334
- .debug_macro   0x00000000       0x81 ./Src/001Led_toggle.o
- .debug_macro   0x00000081      0xae4 ./Src/001Led_toggle.o
- .debug_macro   0x00000b65       0x22 ./Src/001Led_toggle.o
- .debug_macro   0x00000b87       0x8e ./Src/001Led_toggle.o
- .debug_macro   0x00000c15       0x51 ./Src/001Led_toggle.o
- .debug_macro   0x00000c66      0x103 ./Src/001Led_toggle.o
- .debug_macro   0x00000d69       0x6a ./Src/001Led_toggle.o
- .debug_macro   0x00000dd3      0x1df ./Src/001Led_toggle.o
- .debug_macro   0x00000fb2      0x23d ./Src/001Led_toggle.o
- .debug_macro   0x000011ef       0xc4 ./Src/001Led_toggle.o
- .debug_macro   0x000012b3       0x81 ./drivers/Src/stm32f407xx_gpio_driver.o
+.debug_macro    0x00000000     0x133e
+ .debug_macro   0x00000000       0x86 ./Src/001Led_toggle.o
+ .debug_macro   0x00000086      0xae4 ./Src/001Led_toggle.o
+ .debug_macro   0x00000b6a       0x22 ./Src/001Led_toggle.o
+ .debug_macro   0x00000b8c       0x8e ./Src/001Led_toggle.o
+ .debug_macro   0x00000c1a       0x51 ./Src/001Led_toggle.o
+ .debug_macro   0x00000c6b      0x103 ./Src/001Led_toggle.o
+ .debug_macro   0x00000d6e       0x6a ./Src/001Led_toggle.o
+ .debug_macro   0x00000dd8      0x1df ./Src/001Led_toggle.o
+ .debug_macro   0x00000fb7      0x23d ./Src/001Led_toggle.o
+ .debug_macro   0x000011f4       0xc4 ./Src/001Led_toggle.o
+ .debug_macro   0x000012b8       0x86 ./drivers/Src/stm32f407xx_gpio_driver.o
 
 .debug_line     0x00000000      0xc95
  .debug_line    0x00000000      0x4c6 ./Src/001Led_toggle.o

@@ -37,17 +37,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_rnglists 0000007e  00000000  00000000  000021d0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00001334  00000000  00000000  0000224e  2**0
+ 17 .debug_macro  0000133e  00000000  00000000  0000224e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00000c95  00000000  00000000  00003582  2**0
+ 18 .debug_line   00000c95  00000000  00000000  0000358c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00005084  00000000  00000000  00004217  2**0
+ 19 .debug_str    00005084  00000000  00000000  00004221  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  0000929b  2**0
+ 20 .comment      00000043  00000000  00000000  000092a5  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00000224  00000000  00000000  000092e0  2**2
+ 21 .debug_frame  00000224  00000000  00000000  000092e8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000067  00000000  00000000  00009504  2**0
+ 22 .debug_line_str 00000067  00000000  00000000  0000950c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -81,8 +81,8 @@ Disassembly of section .text:
  80001c4:	0800059c 	.word	0x0800059c
 
 080001c8 <delay>:
-//#include "stm32f407xx.h"
-#include "stm32f407xx_gpio_driver.h"
+
+#include "stm32f407xx.h"
 
 
 void delay(void)
@@ -90,7 +90,7 @@ void delay(void)
  80001c8:	b480      	push	{r7}
  80001ca:	b083      	sub	sp, #12
  80001cc:	af00      	add	r7, sp, #0
-	for(uint32_t i = 0 ; i < 500000 ; i++);
+	for(uint32_t i = 0 ; i < 300000 ; i++);
  80001ce:	2300      	movs	r3, #0
  80001d0:	607b      	str	r3, [r7, #4]
  80001d2:	e002      	b.n	80001da <delay+0x12>
@@ -108,7 +108,7 @@ void delay(void)
  80001e8:	46bd      	mov	sp, r7
  80001ea:	f85d 7b04 	ldr.w	r7, [sp], #4
  80001ee:	4770      	bx	lr
- 80001f0:	0007a11f 	.word	0x0007a11f
+ 80001f0:	000493df 	.word	0x000493df
 
 080001f4 <main>:
 

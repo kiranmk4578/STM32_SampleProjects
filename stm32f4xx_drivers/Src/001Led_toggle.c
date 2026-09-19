@@ -4,13 +4,13 @@
  *  Created on: Sep 18, 2026
  *      Author: KIRANA M K
  */
-//#include "stm32f407xx.h"
-#include "stm32f407xx_gpio_driver.h"
+
+#include "stm32f407xx.h"
 
 
 void delay(void)
 {
-	for(uint32_t i = 0 ; i < 500000 ; i++);
+	for(uint32_t i = 0 ; i < 300000 ; i++);
 }
 
 int main(void)
