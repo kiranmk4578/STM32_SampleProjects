@@ -92,9 +92,9 @@ typedef struct
  * @GPIO_PIN_PUPD
  * GPIO pin pull up and pull down configuration macros
  */
-#define GPIO_NO_PUPD	 	0
-#define GPIO_PIN_PUPD 		1
-#define GPIO_PIN_PD 		2
+#define GPIO_NO_PUPD    0  // No pull-up or pull-down
+#define GPIO_PIN_PU     1  // Enable pull-up
+#define GPIO_PIN_PD     2  // Enable pull-down
 
 /**************************************************************************************************************************
  * 								APIs supported by this driver
