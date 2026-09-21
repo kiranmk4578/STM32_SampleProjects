@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  0000134a  00000000  00000000  000022e6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00000cb0  00000000  00000000  00003630  2**0
+ 18 .debug_line   00000cb4  00000000  00000000  00003630  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000050a2  00000000  00000000  000042e0  2**0
+ 19 .debug_str    0000509e  00000000  00000000  000042e4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .comment      00000043  00000000  00000000  00009382  2**0
                   CONTENTS, READONLY
@@ -82,15 +82,15 @@ Disassembly of section .text:
 
 080001c8 <delay>:
 
-#define HIGH 1
-#define BTN_PRESSED HIGH
+#define LOW 0
+#define BTN_PRESSED LOW
 
 void delay(void)
 {
  80001c8:	b480      	push	{r7}
  80001ca:	b083      	sub	sp, #12
  80001cc:	af00      	add	r7, sp, #0
-	for(uint32_t i = 0 ; i < 500000/2 ; i++);
+	for(uint32_t i = 0 ; i < 500000 ; i++);
  80001ce:	2300      	movs	r3, #0
  80001d0:	607b      	str	r3, [r7, #4]
  80001d2:	e002      	b.n	80001da <delay+0x12>
@@ -108,7 +108,7 @@ void delay(void)
  80001e8:	46bd      	mov	sp, r7
  80001ea:	f85d 7b04 	ldr.w	r7, [sp], #4
  80001ee:	4770      	bx	lr
- 80001f0:	0003d08f 	.word	0x0003d08f
+ 80001f0:	0007a11f 	.word	0x0007a11f
 
 080001f4 <main>:
 
@@ -120,11 +120,11 @@ int main(void)
 	GPIO_Handle_t GpioLed, GpioBtn;
 
 	// This is LED gpio configuration
-	GpioLed.pGPIOx = GPIOD;
+	GpioLed.pGPIOx = GPIOA;
  80001fa:	4b1a      	ldr	r3, [pc, #104]	@ (8000264 <main+0x70>)
  80001fc:	60fb      	str	r3, [r7, #12]
-	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;
- 80001fe:	230c      	movs	r3, #12
+	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_8;
+ 80001fe:	2308      	movs	r3, #8
  8000200:	743b      	strb	r3, [r7, #16]
 	GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
  8000202:	2301      	movs	r3, #1
@@ -139,7 +139,7 @@ int main(void)
  800020e:	2300      	movs	r3, #0
  8000210:	74fb      	strb	r3, [r7, #19]
 
-	GPIO_PeripheralClockControl(GPIOD,ENABLE);
+	GPIO_PeripheralClockControl(GPIOA,ENABLE);
  8000212:	2101      	movs	r1, #1
  8000214:	4813      	ldr	r0, [pc, #76]	@ (8000264 <main+0x70>)
  8000216:	f000 f853 	bl	80002c0 <GPIO_PeripheralClockControl>
@@ -150,11 +150,11 @@ int main(void)
  8000220:	f000 f8d6 	bl	80003d0 <GPIO_Init>
 
 	//This is button gpio configuration
-	GpioBtn.pGPIOx = GPIOA;
+	GpioBtn.pGPIOx = GPIOB;
  8000224:	4b10      	ldr	r3, [pc, #64]	@ (8000268 <main+0x74>)
  8000226:	603b      	str	r3, [r7, #0]
-	GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_0;
- 8000228:	2300      	movs	r3, #0
+	GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;
+ 8000228:	230c      	movs	r3, #12
  800022a:	713b      	strb	r3, [r7, #4]
 	GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IN;
  800022c:	2300      	movs	r3, #0
@@ -166,7 +166,7 @@ int main(void)
  8000234:	2300      	movs	r3, #0
  8000236:	71fb      	strb	r3, [r7, #7]
 
-	GPIO_PeripheralClockControl(GPIOA,ENABLE);
+	GPIO_PeripheralClockControl(GPIOB,ENABLE);
  8000238:	2101      	movs	r1, #1
  800023a:	480b      	ldr	r0, [pc, #44]	@ (8000268 <main+0x74>)
  800023c:	f000 f840 	bl	80002c0 <GPIO_PeripheralClockControl>
@@ -178,24 +178,24 @@ int main(void)
 
 	while(1)
 	{
-		if(GPIO_ReadFromInputPin(GPIOA, GPIO_PIN_NO_0) == BTN_PRESSED) //this fn returns HIGH when button pressed then we toggle LED
- 8000248:	2100      	movs	r1, #0
+		if(GPIO_ReadFromInputPin(GPIOB, GPIO_PIN_NO_12) == BTN_PRESSED) //this fn returns LOW when button pressed then we toggle LED
+ 8000248:	210c      	movs	r1, #12
  800024a:	4807      	ldr	r0, [pc, #28]	@ (8000268 <main+0x74>)
  800024c:	f000 f987 	bl	800055e <GPIO_ReadFromInputPin>
  8000250:	4603      	mov	r3, r0
- 8000252:	2b01      	cmp	r3, #1
+ 8000252:	2b00      	cmp	r3, #0
  8000254:	d1f8      	bne.n	8000248 <main+0x54>
 		{
 		delay();
  8000256:	f7ff ffb7 	bl	80001c8 <delay>
-		GPIO_ToggleOutputPin(GPIOD, GPIO_PIN_NO_12);
- 800025a:	210c      	movs	r1, #12
+		GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_8);
+ 800025a:	2108      	movs	r1, #8
  800025c:	4801      	ldr	r0, [pc, #4]	@ (8000264 <main+0x70>)
  800025e:	f000 f994 	bl	800058a <GPIO_ToggleOutputPin>
-		if(GPIO_ReadFromInputPin(GPIOA, GPIO_PIN_NO_0) == BTN_PRESSED) //this fn returns HIGH when button pressed then we toggle LED
+		if(GPIO_ReadFromInputPin(GPIOB, GPIO_PIN_NO_12) == BTN_PRESSED) //this fn returns LOW when button pressed then we toggle LED
  8000262:	e7f1      	b.n	8000248 <main+0x54>
- 8000264:	40020c00 	.word	0x40020c00
- 8000268:	40020000 	.word	0x40020000
+ 8000264:	40020000 	.word	0x40020000
+ 8000268:	40020400 	.word	0x40020400
 
 0800026c <Reset_Handler>:
 
