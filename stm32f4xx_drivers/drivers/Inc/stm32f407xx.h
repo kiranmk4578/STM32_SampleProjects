@@ -96,7 +96,7 @@
 typedef struct{
 
 	__vo uint32_t MODER;     // 0x00: Pin mode (input, output, alt, analog)
-	__vo int32_t OTYPER;    // 0x04: Output type (push-pull or open-drain)
+	__vo uint32_t OTYPER;    // 0x04: Output type (push-pull or open-drain)
 	__vo uint32_t OSPEEDR;   // 0x08: Output speed (low, medium, high, very high)
 	__vo uint32_t PUPDR;     // 0x0C: Pull-up / Pull-down configuration
 	__vo uint32_t IDR;       // 0x10: Input data register (read pin state)
@@ -143,6 +143,27 @@ typedef struct{
 
 } RCC_RegDef_t;
 
+typedef struct
+{
+    __vo uint32_t IMR;    // 0x00 : Interrupt Mask Register
+    __vo uint32_t EMR;    // 0x04 : Event Mask Register
+    __vo uint32_t RTSR;   // 0x08 : Rising Trigger Selection Register
+    __vo uint32_t FTSR;   // 0x0C : Falling Trigger Selection Register
+    __vo uint32_t SWIER;  // 0x10 : Software Interrupt/Event Register
+    __vo uint32_t PR;     // 0x14 : Pending Register
+
+} EXTI_RegDef_t;
+
+
+typedef struct
+{
+    __vo uint32_t MEMRMP;     // 0x00 : Memory remap register
+    __vo uint32_t PMC;        // 0x04 : Peripheral mode configuration
+    __vo uint32_t EXTICR[4];  // 0x08–0x14 : External interrupt configuration registers
+    uint32_t RESERVED[2];     // 0x18–0x1C : Two reserved slots (each 4 bytes)
+    __vo uint32_t CMPCR;      // 0x20 : Compensation cell control register
+
+} SYSCFG_RegDef_t;
 
 
 /*
@@ -157,6 +178,11 @@ typedef struct{
 #define GPIOE 			((GPIO_RegDef_t*)GPIOE_BASEADDR) // Pointer(address) of data type GPIO_RegDef_t* to GPIOE register base address
 
 #define RCC 			((RCC_RegDef_t*)RCC_BASEADDR) // Pointer(address) of data type RCC_RegDef_t* to RCC register base address
+
+#define EXTI 			((EXTI_RegDef_t*)EXTI_BASEADDR) // Pointer to EXTI_RegDef_t structure, pointing to the EXTI base address.
+
+#define SYSCFG			((SYSCFG_RegDef_t*)SYSCFG_BASEADDR) // Pointer to SYSCFG_RegDef_t structure, pointing to the SYSCFG base address.
+
 
 
 /*
@@ -252,6 +278,20 @@ typedef struct{
 #define GPIOD_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 3)); RCC->AHB1RSTR &= ~(1 << 3); }while(0)//reset registers of GPIOD peripheral
 #define GPIOE_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 4)); RCC->AHB1RSTR &= ~(1 << 4); }while(0)//reset registers of GPIOE peripheral
 
+/*
+ Macro to convert GPIO base address into numeric code
+ Uses chained ternary operators:
+ - If x == GPIOA → return 0
+ - If x == GPIOB → return 1
+ - If x == GPIOC → return 2
+ - If x == GPIOD → return 3
+ - If x == GPIOE → return 4
+*/
+#define GPIO_BASEADDR_TO_CODE(x)	  ( (x == GPIOA)?0:\
+										(x == GPIOB)?1:\
+										(x == GPIOC)?2:\
+										(x == GPIOD)?3:\
+										(x == GPIOE)?4:0 )
 
 //some generic MACROs
 
