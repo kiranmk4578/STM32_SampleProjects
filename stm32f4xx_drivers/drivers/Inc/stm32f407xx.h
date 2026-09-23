@@ -12,6 +12,23 @@
 #include<stdint.h>
 #define __vo volatile
 
+/******************************START: Processor Specific Details ***************************
+ * ARM Cortex Mx Processor NVIC ISERx register Addresses
+ */
+
+#define NVIC_ISER0   ((__vo uint32_t*)0xE000E100)  // Interrupt Set-Enable Register 0 → enables IRQs 0–31
+#define NVIC_ISER1   ((__vo uint32_t*)0xE000E104)  // Interrupt Set-Enable Register 1 → enables IRQs 32–63
+#define NVIC_ISER2   ((__vo uint32_t*)0xE000E108)  // Interrupt Set-Enable Register 2 → enables IRQs 64–95
+
+/*
+ * ARM Cortex Mx Processor NVIC ICERx register Addresses
+ */
+
+#define NVIC_ICER0   ((__vo uint32_t*)0xE000E180)  // Interrupt Clear-Enable Register 0 → disables IRQs 0–31
+#define NVIC_ICER1   ((__vo uint32_t*)0xE000E184)  // Interrupt Clear-Enable Register 1 → disables IRQs 32–63
+#define NVIC_ICER2   ((__vo uint32_t*)0xE000E188)  // Interrupt Clear-Enable Register 2 → disables IRQs 64–95
+
+
 // Base addresses of Memory sections
 #define FLASH_BASEADDR						0x08000000U // Base address of internal Flash memory
 #define SRAM1_BASEADDR 						0x20000000U // Base address of main internal SRAM1 (112 KB)
@@ -302,6 +319,17 @@ typedef struct
 #define GPIO_PIN_SET    1   	// GPIO pin logic high
 #define GPIO_PIN_RESET  0   	// GPIO pin logic low
 
+/*IRQ(Interrupt Request) Numbers of STM32F407X MCU
+• NOTE: update these macros with valid values according to your
+• TODO: You may complete this list for other peripherals
+*/
+#define IRQ_NO_EXTI0        6   // Interrupt request number for EXTI line 0
+#define IRQ_NO_EXTI1        7   // Interrupt request number for EXTI line 1
+#define IRQ_NO_EXTI2        8   // Interrupt request number for EXTI line 2
+#define IRQ_NO_EXTI3        9   // Interrupt request number for EXTI line 3
+#define IRQ_NO_EXTI4        10  // Interrupt request number for EXTI line 4
+#define IRQ_NO_EXTI9_5      23  // Shared IRQ number for EXTI lines 5 to 9
+#define IRQ_NO_EXTI15_10    40  // Shared IRQ number for EXTI lines 10 to 15
 
 
 

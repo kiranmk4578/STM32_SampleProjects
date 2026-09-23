@@ -299,7 +299,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x103 ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_macro   0x00000000       0x6a ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_macro   0x00000000      0x1df ./drivers/Src/stm32f407xx_gpio_driver.o
- .debug_macro   0x00000000      0x252 ./drivers/Src/stm32f407xx_gpio_driver.o
+ .debug_macro   0x00000000      0x2a7 ./drivers/Src/stm32f407xx_gpio_driver.o
  .debug_macro   0x00000000       0xc4 ./drivers/Src/stm32f407xx_gpio_driver.o
  .text          0x00000000        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-exit.o)
  .data          0x00000000        0x0 C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-exit.o)
@@ -874,7 +874,7 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_rnglists
                 0x00000032       0x4c ./drivers/Src/stm32f407xx_gpio_driver.o
 
-.debug_macro    0x00000000     0x135f
+.debug_macro    0x00000000     0x13b4
  .debug_macro   0x00000000       0x92 ./Src/003Led_button_ext.o
  .debug_macro   0x00000092      0xae4 ./Src/003Led_button_ext.o
  .debug_macro   0x00000b76       0x22 ./Src/003Led_button_ext.o
@@ -883,20 +883,20 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x00000c77      0x103 ./Src/003Led_button_ext.o
  .debug_macro   0x00000d7a       0x6a ./Src/003Led_button_ext.o
  .debug_macro   0x00000de4      0x1df ./Src/003Led_button_ext.o
- .debug_macro   0x00000fc3      0x252 ./Src/003Led_button_ext.o
- .debug_macro   0x00001215       0xc4 ./Src/003Led_button_ext.o
- .debug_macro   0x000012d9       0x86 ./drivers/Src/stm32f407xx_gpio_driver.o
+ .debug_macro   0x00000fc3      0x2a7 ./Src/003Led_button_ext.o
+ .debug_macro   0x0000126a       0xc4 ./Src/003Led_button_ext.o
+ .debug_macro   0x0000132e       0x86 ./drivers/Src/stm32f407xx_gpio_driver.o
 
 .debug_line     0x00000000      0xdb6
  .debug_line    0x00000000      0x4e5 ./Src/003Led_button_ext.o
  .debug_line    0x000004e5       0x7b ./Startup/startup_stm32f407vgtx.o
  .debug_line    0x00000560      0x856 ./drivers/Src/stm32f407xx_gpio_driver.o
 
-.debug_str      0x00000000     0x51a6
- .debug_str     0x00000000     0x51a6 ./Src/003Led_button_ext.o
-                               0x5090 (size before relaxing)
- .debug_str     0x000051a6       0x83 ./Startup/startup_stm32f407vgtx.o
- .debug_str     0x000051a6     0x52a5 ./drivers/Src/stm32f407xx_gpio_driver.o
+.debug_str      0x00000000     0x5308
+ .debug_str     0x00000000     0x5308 ./Src/003Led_button_ext.o
+                               0x51f2 (size before relaxing)
+ .debug_str     0x00005308       0x83 ./Startup/startup_stm32f407vgtx.o
+ .debug_str     0x00005308     0x5407 ./drivers/Src/stm32f407xx_gpio_driver.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Src/003Led_button_ext.o
