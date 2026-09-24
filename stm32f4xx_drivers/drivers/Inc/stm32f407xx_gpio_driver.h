@@ -142,10 +142,14 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
  */
 
 // Configure NVIC interrupt number, priority, and enable/disable
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi);
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
 
 // Handle interrupt event for the given GPIO pin
 void GPIO_IRQHandling(uint8_t PinNumber);
+
+// Configure NVIC priority for the given IRQ number
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+
 
 
 

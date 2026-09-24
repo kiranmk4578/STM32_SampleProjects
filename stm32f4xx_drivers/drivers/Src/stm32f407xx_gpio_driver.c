@@ -333,9 +333,66 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  *
  * @Note      - Must be configured before enabling GPIO interrupts
  ***************************************************************/
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi)
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
 {
+	if (EnorDi == ENABLE)
+	{
+	    if (IRQNumber <= 31)
+	    {
+	        // Program ISER0 register → enables IRQs 0–31
+	        *NVIC_ISER0 |= (1 << IRQNumber);
+	    }
+	    else if (IRQNumber > 31 && IRQNumber < 64)
+	    {
+	        // Program ISER1 register → enables IRQs 32–63
+	        *NVIC_ISER1 |= (1 << (IRQNumber % 32));
+	    }
+	    else if (IRQNumber >= 64 && IRQNumber < 96)
+	    {
+	        // Program ISER2 register → enables IRQs 64–95
+	        *NVIC_ISER2 |= (1 << (IRQNumber % 32));
+	    }
+	}
+	else
+	{
+	    if (IRQNumber <= 31)
+	    {
+	        // Program ICER0 register → disables IRQs 0–31
+	        *NVIC_ICER0 |= (1 << IRQNumber);
+	    }
+	    else if (IRQNumber > 31 && IRQNumber < 64)
+	    {
+	        // Program ICER1 register → disables IRQs 32–63
+	        *NVIC_ICER1 |= (1 << (IRQNumber % 32));
+	    }
+	    else if (IRQNumber >= 64 && IRQNumber < 96)
+	    {
+	        // Program ICER2 register → disables IRQs 64–95
+	        *NVIC_ICER2 |= (1 << (IRQNumber % 32));
+	    }
+	}
 
+}
+/***************************************************************
+ * @fn        - GPIO_IRQPriorityConfig
+ *
+ * @brief     - Configures NVIC priority for the given IRQ number
+ *
+ * @param[in] - IRQPriority : Priority level to be assigned
+ *
+ * @return    - none
+ *
+ * @Note      - Shifts priority value into correct IPR register
+ *              field based on IRQ number
+ ***************************************************************/
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+{
+	//1. first lets find out IPR register
+	uint8_t iprx = IRQNumber / 4;
+	uint8_t iprx_section = IRQNumber % 4;
+
+	uint8_t shift_amount = ( 8 * iprx_section ) + ( 8 - NO_PR_BITS_IMPLEMENTED);
+	*(NVIC_PR_BASE_ADDR + (iprx * 4)) |= ( IRQPriority << shift_amount );
 }
 
 /***************************************************************

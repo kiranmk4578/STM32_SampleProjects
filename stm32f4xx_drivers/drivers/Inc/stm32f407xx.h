@@ -28,6 +28,14 @@
 #define NVIC_ICER1   ((__vo uint32_t*)0xE000E184)  // Interrupt Clear-Enable Register 1 → disables IRQs 32–63
 #define NVIC_ICER2   ((__vo uint32_t*)0xE000E188)  // Interrupt Clear-Enable Register 2 → disables IRQs 64–95
 
+/*
+ * ARM Cortex Mx Processor Priority register Addresses
+ */
+#define NVIC_PR_BASE_ADDR   ((__vo uint32_t*)0xE000E400) //Base address of NVIC Interrupt Priority Registers (IPR
+
+/* Number of implemented priority bits per IRQ field (upper 4 bits only) and this value is specific to microcontroller(for eg for TI it is 3) */
+#define NO_PR_BITS_IMPLEMENTED 4
+
 
 // Base addresses of Memory sections
 #define FLASH_BASEADDR						0x08000000U // Base address of internal Flash memory
