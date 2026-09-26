@@ -54,3 +54,16 @@ For eg: pGPIOHandle->pGPIOx->MODER &= ~(3 << pGPIOHandle->GPIO_PinConfig.GPIO_Pi
 
 
 
+typedef struct{
+
+	__vo uint32_t MODER;     // 0x00: Pin mode (input, output, alt, analog)
+	__vo uint32_t OTYPER;    // 0x04: Output type (push-pull or open-drain)
+	__vo uint32_t OSPEEDR;   // 0x08: Output speed (low, medium, high, very high)
+	__vo uint32_t PUPDR;     // 0x0C: Pull-up / Pull-down configuration
+	__vo uint32_t IDR;       // 0x10: Input data register (read pin state)
+	__vo uint32_t ODR;       // 0x14: Output data register (write pin state)
+	__vo uint32_t BSRR;      // 0x18: Bit set/reset register (atomic set/reset)
+	__vo uint32_t LCKR;      // 0x1C: Configuration lock register (lock settings)
+	__vo uint32_t AFR[2];    // 0x20-0x24: Alternate function registers (AFR[0]=pins 0-7(Low register), AFR[1]=pins 8-15(High register))
+
+} GPIO_RegDef_t;

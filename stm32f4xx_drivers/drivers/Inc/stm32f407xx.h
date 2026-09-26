@@ -340,6 +340,25 @@ typedef struct
 #define IRQ_NO_EXTI15_10    40  // Shared IRQ number for EXTI lines 10 to 15
 
 
+// NVIC interrupt priority levels (0 = highest, larger = lower priority)
+#define NVIC_IRQ_PRI0   0   // Priority level for IRQ 0
+#define NVIC_IRQ_PRI1   1   // Priority level for IRQ 1
+#define NVIC_IRQ_PRI2   2   // Priority level for IRQ 2
+#define NVIC_IRQ_PRI3   3   // Priority level for IRQ 3
+#define NVIC_IRQ_PRI4   4   // Priority level for IRQ 4
+#define NVIC_IRQ_PRI5   5   // Priority level for IRQ 5
+#define NVIC_IRQ_PRI6   6   // Priority level for IRQ 6
+#define NVIC_IRQ_PRI7   7   // Priority level for IRQ 7
+#define NVIC_IRQ_PRI8   8   // Priority level for IRQ 8
+#define NVIC_IRQ_PRI9   9   // Priority level for IRQ 9
+#define NVIC_IRQ_PRI10  10  // Priority level for IRQ 10
+#define NVIC_IRQ_PRI11  11  // Priority level for IRQ 11
+#define NVIC_IRQ_PRI12  12  // Priority level for IRQ 12
+#define NVIC_IRQ_PRI13  13  // Priority level for IRQ 13
+#define NVIC_IRQ_PRI14  14  // Priority level for IRQ 14
+#define NVIC_IRQ_PRI15  15  // Priority level for IRQ 15
+
+
 
 #include "stm32f407xx_gpio_driver.h"
 
