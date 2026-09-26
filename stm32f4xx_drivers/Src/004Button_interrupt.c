@@ -15,6 +15,7 @@
 
 void delay(void)
 {
+	// ~200 ms delay is introduced when system clock is 16 MHz
 	for(uint32_t i = 0 ; i < 500000/2 ; i++);
 }
 
@@ -59,6 +60,7 @@ int main(void)
 
 void EXTI9_5_IRQHandler(void)
 {
-		GPIO_IRQHandling(GPIO_PIN_NO_5);
-		GPIO_ToggleOutputPin(GPIOD, GPIO_PIN_NO_12);
+	delay(); //200ms
+	GPIO_IRQHandling(GPIO_PIN_NO_5); //clear the pending event from the EXTI line
+	GPIO_ToggleOutputPin(GPIOD, GPIO_PIN_NO_12);
 }
