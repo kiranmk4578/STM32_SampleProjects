@@ -190,6 +190,19 @@ typedef struct
 
 } SYSCFG_RegDef_t;
 
+typedef struct
+{
+    __vo uint32_t CR[2];       // 0x00-0x04: Control registers (CR[0] = CR1, CR[1] = CR2)
+    __vo uint32_t SR;          // 0x08: Status register
+    __vo uint32_t DR;          // 0x0C: Data register
+    __vo uint32_t CRCPR;       // 0x10: CRC polynomial register
+    __vo uint32_t RXCRCR;      // 0x14: RX CRC register
+    __vo uint32_t TXCRCR;      // 0x18: TX CRC register
+    __vo uint32_t I2SCFGR;     // 0x1C: I2S configuration register
+    __vo uint32_t I2SPR;       // 0x20: I2S prescaler register
+
+} SPI_RegDef_t;
+
 
 /*
  * peripheral definitions (Peripheral base addresses type casted to xxx_RegDef_t)
@@ -361,6 +374,7 @@ typedef struct
 
 
 #include "stm32f407xx_gpio_driver.h"
+#include "stm32f407xx_spi_driver.h"
 
 
 
