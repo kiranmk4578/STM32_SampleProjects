@@ -37,6 +37,52 @@ typedef struct
 } SPI_Handle_t;
 
 
+/**************************************************************************************************************************
+ * 								APIs supported by this driver
+ *			For more information about the APIs check the function definitions
+ **************************************************************************************************************************/
+
+/*
+ * Peripheral Clock Setup
+ */
+
+// Enable or disable the peripheral clock for the selected SPI
+void SPI_PeripheralClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
+
+/*
+ * Initialization and De-initialization
+ */
+
+// Configure the selected SPI peripheral using the settings in the handle
+void SPI_Init(SPI_Handle_t *pSPIHandle);
+
+// Reset the registers of the selected SPI peripheral to their reset values
+void SPI_DeInit(SPI_RegDef_t *pSPIx);
+
+/*
+ * Data send and Receive
+ */
+ void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len);
+ void SPI_RecieveData(SPI_RegDef_t *pSPIx, uint8_t *pRxBuffer, uint32_t Len);
+
+/*
+ * IRQ Configuration and ISR handling
+ */
+ // Configure NVIC interrupt number, priority, and enable/disable
+ void SPI_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
+
+ // Configure NVIC priority for the given IRQ number
+ void SPI_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority);
+
+ // Handle interrupt event for the given SPI
+ void SPI_IRQHandling(SPI_Handle_t *pHandle);
+
+
+/*
+ * Other Peripheral Control APIs
+ */
+
+
 
 
 

@@ -192,7 +192,8 @@ typedef struct
 
 typedef struct
 {
-    __vo uint32_t CR[2];       // 0x00-0x04: Control registers (CR[0] = CR1, CR[1] = CR2)
+	__vo uint32_t CR1;       // 0x00: Control register 1
+	__vo uint32_t CR2;       // 0x04: Control register 2
     __vo uint32_t SR;          // 0x08: Status register
     __vo uint32_t DR;          // 0x0C: Data register
     __vo uint32_t CRCPR;       // 0x10: CRC polynomial register
@@ -221,8 +222,9 @@ typedef struct
 
 #define SYSCFG			((SYSCFG_RegDef_t*)SYSCFG_BASEADDR) // Pointer to SYSCFG_RegDef_t structure, pointing to the SYSCFG base address.
 
-
-
+#define SPI1    		((SPI_RegDef_t*)SPI1_BASEADDR)  // Pointer to the SPI1 peripheral register structure
+#define SPI2    		((SPI_RegDef_t*)SPI2_BASEADDR)  // Pointer to the SPI2 peripheral register structure
+#define SPI3    		((SPI_RegDef_t*)SPI3_BASEADDR)  // Pointer to the SPI3 peripheral register structure
 /*
 * Clock Enable Macros for GPIOx peripherals
 */
@@ -247,6 +249,7 @@ typedef struct
 
 #define SPI2_PCLK_EN() 	( RCC->APB1ENR |= (1 << 14) ) // Enable clock for SPI2 peripheral
 #define SPI3_PCLK_EN() 	( RCC->APB1ENR |= (1 << 15) ) // Enable clock for SPI3 peripheral
+#define SPI1_PCLK_EN() 	( RCC->APB2ENR |= (1 << 12) ) // Enable clock for SPI1 peripheral
 
 /*
 * Clock Enable Macros for USARTx peripherals
@@ -291,6 +294,8 @@ typedef struct
 #define SPI2_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 14) ) // Disable clock for SPI2 peripheral
 #define SPI3_PCLK_DI() 	( RCC->APB1ENR &= ~(1 << 15) ) // Disable clock for SPI3 peripheral
 
+#define SPI1_PCLK_DI() 	( RCC->APB2ENR &= ~(1 << 12) ) // Disable clock for SPI1 peripheral
+
 /*
 * Clock Disable Macros for USARTx peripherals
 */
@@ -316,6 +321,10 @@ typedef struct
 #define GPIOD_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 3)); RCC->AHB1RSTR &= ~(1 << 3); }while(0)//reset registers of GPIOD peripheral
 #define GPIOE_REGISTER_RESET()		do{ ( RCC->AHB1RSTR |= (1 << 4)); RCC->AHB1RSTR &= ~(1 << 4); }while(0)//reset registers of GPIOE peripheral
 
+#define SPI1_REGISTER_RESET()    do{ (RCC->APB2RSTR |=  (1 << 12)); RCC->APB2RSTR &= ~(1 << 12); }while(0)// Reset registers of SPI1 peripheral
+
+#define SPI2_REGISTER_RESET()    do{ (RCC->APB1RSTR |=  (1 << 14)); RCC->APB1RSTR &= ~(1 << 14); }while(0) // Reset registers of SPI2 peripheral
+#define SPI3_REGISTER_RESET()    do{ (RCC->APB1RSTR |=  (1 << 15)); RCC->APB1RSTR &= ~(1 << 15); }while(0) // Reset registers of SPI3 peripheral
 /*
  Macro to convert GPIO base address into numeric code
  Uses chained ternary operators:
