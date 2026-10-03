@@ -36,6 +36,32 @@ typedef struct
 
 } SPI_Handle_t;
 
+/*
+ * @SPI_DEVICE_MODE
+ */
+#define SPI_DEVICE_MODE_MASTER		1
+#define SPI_DEVICE_MODE_SLAVE		0
+
+/*
+ * @SPI_BUS_CONFIG
+ */
+#define SPI_BUS_CONFIG_FD				1	// Full Duplex communication
+#define SPI_BUS_CONFIG_HD				2   // Half Duplex communication
+#define SPI_BUS_CONFIG_SIMPLEX_TXONLY	3
+#define SPI_BUS_CONFIG_SIMPLEX_RXONLY	4
+
+/*
+ * @SPI_SCLK_SPEED
+ */
+#define SPI_SCLK_SPEED_DIV2       0   // SPI clock speed = Fpclk / 2
+#define SPI_SCLK_SPEED_DIV4       1   // SPI clock speed = Fpclk / 4
+#define SPI_SCLK_SPEED_DIV8       2   // SPI clock speed = Fpclk / 8
+#define SPI_SCLK_SPEED_DIV16      3   // SPI clock speed = Fpclk / 16
+#define SPI_SCLK_SPEED_DIV32      4   // SPI clock speed = Fpclk / 32
+#define SPI_SCLK_SPEED_DIV64      5   // SPI clock speed = Fpclk / 64
+#define SPI_SCLK_SPEED_DIV128     6   // SPI clock speed = Fpclk / 128
+#define SPI_SCLK_SPEED_DIV256     7   // SPI clock speed = Fpclk / 256
+
 
 /**************************************************************************************************************************
  * 								APIs supported by this driver
