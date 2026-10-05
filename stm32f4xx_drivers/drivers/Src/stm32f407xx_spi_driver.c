@@ -70,6 +70,73 @@ void SPI_PeripheralClockControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
  ***************************************************************************************/
 void SPI_Init(SPI_Handle_t *pSPIHandle)
 {
+	// first lets configure the SPI_CR1 register
+	uint32_t tempreg = 0;
+
+	//1. configure the device mode
+	tempreg |= pSPIHandle->SPIConfig.SPI_DeviceMode << SPI_CR1_MSTR;
+
+	//2. Configure the bus config
+	if(pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_FD)
+	{
+		//bidi mode should be cleared
+		tempreg &= ~(1 << SPI_CR1_BIDIMODE);
+	}else if (pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_HD)
+	{
+		//bidi mode should be set
+		tempreg |= (1 << SPI_CR1_BIDIMODE);
+
+
+	}else if(pSPIHandle->SPIConfig.SPI_BusConfig == SPI_BUS_CONFIG_SIMPLEX_RXONLY)
+	{
+		//BIDI mode should be cleared
+		tempreg &= ~(1 << SPI_CR1_BIDIMODE);
+		//RXONLY bit must be set
+		tempreg |= ~(1 << SPI_CR1_RXONLY);
+	}
+
+	//3. Configure the clock speed(baud rate)
+	tempreg |= pSPIHandle->SPIConfig.SPI_SclkSpeed << SPI_CR1_BR;
+
+	//4. Configure Data frame format
+	tempreg |= pSPIHandle->SPIConfig.SPI_DFF << SPI_CR1_DFF;
+
+	//5. Configure CPOL
+	tempreg |= pSPIHandle->SPIConfig.SPI_CPOL << SPI_CR1_CPOL;
+
+	//6. Configure CPHA
+	tempreg |= pSPIHandle->SPIConfig.SPI_CPHA << SPI_CR1_CPHA;
+
+	//7.  Configure SSM
+	tempreg |= pSPIHandle->SPIConfig.SPI_SSM << SPI_CR1_SSM;
+
+	//Copy the configurations into SPI_CR1 register
+	pSPIHandle->pSPIx->CR1 = tempreg;
+
+	// Lets configure the SPI_CR2 register
+	//clear tempreg
+	tempreg = 0;
+
+	// 8. Configure RX DMA
+	tempreg |= pSPIHandle->SPIConfig.SPI_RXDMAEN << SPI_CR2_RXDMAEN;
+
+	// 9. Configure TX DMA
+	tempreg |= pSPIHandle->SPIConfig.SPI_TXDMAEN << SPI_CR2_TXDMAEN;
+
+	// 10. Configure SS output enable
+	tempreg |= pSPIHandle->SPIConfig.SPI_SSOE << SPI_CR2_SSOE;
+
+	// 11. Configure error interrupt
+	tempreg |= pSPIHandle->SPIConfig.SPI_ERRIE << SPI_CR2_ERRIE;
+
+	// 12. Configure RXNE interrupt
+	tempreg |= pSPIHandle->SPIConfig.SPI_RXNEIE << SPI_CR2_RXNEIE;
+
+	// 13. Configure TXE interrupt
+	tempreg |= pSPIHandle->SPIConfig.SPI_TXEIE << SPI_CR2_TXEIE;
+
+	// Copy the configurations into SPI_CR2 register
+	pSPIHandle->pSPIx->CR2 = tempreg;
 
 }
 

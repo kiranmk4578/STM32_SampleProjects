@@ -380,6 +380,28 @@ typedef struct
 #define NVIC_IRQ_PRI14  14  // Priority level for IRQ 14
 #define NVIC_IRQ_PRI15  15  // Priority level for IRQ 15
 
+/***************************************************************************
+ *Bit position definitions of SPI peripheral
+ ***************************************************************************/
+// Bit positions of SPI_CR1 register
+#define SPI_CR1_CPHA        0   // Bit 0: Clock phase
+#define SPI_CR1_CPOL        1   // Bit 1: Clock polarity
+#define SPI_CR1_MSTR        2   // Bit 2: Master selection
+#define SPI_CR1_BR          3   // Bits 3-5: Baud rate control
+#define SPI_CR1_SSM         9   // Bit 9: Software slave management
+#define SPI_CR1_RXONLY      10  // Bit 10: Receive-only mode
+#define SPI_CR1_DFF         11  // Bit 11: Data frame format
+#define SPI_CR1_BIDIOE      14  // Bit 14: Output enable in bidirectional mode
+#define SPI_CR1_BIDIMODE    15  // Bit 15: Bidirectional data mode enable
+
+// Bit positions of SPI_CR2 register
+#define SPI_CR2_RXDMAEN    0   // Bit 0: RX buffer DMA enable
+#define SPI_CR2_TXDMAEN    1   // Bit 1: TX buffer DMA enable
+#define SPI_CR2_SSOE       2   // Bit 2: SS output enable
+#define SPI_CR2_ERRIE      5   // Bit 5: Error interrupt enable
+#define SPI_CR2_RXNEIE     6   // Bit 6: RX buffer not empty interrupt enable
+#define SPI_CR2_TXEIE      7   // Bit 7: TX buffer empty interrupt enable
+
 
 
 #include "stm32f407xx_gpio_driver.h"

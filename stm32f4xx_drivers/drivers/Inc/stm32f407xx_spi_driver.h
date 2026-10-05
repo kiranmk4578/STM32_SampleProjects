@@ -24,6 +24,13 @@ typedef struct
     uint8_t SPI_CPHA;           // Possible values from @SPI_CPHA
     uint8_t SPI_SSM;            // Possible values from @SPI_SSM
 
+    uint8_t SPI_RXDMAEN;    	// Possible values from @SPI_RXDMAEN
+    uint8_t SPI_TXDMAEN;    	// Possible values from @SPI_TXDMAEN
+    uint8_t SPI_ERRIE;     		// Possible values from @SPI_ERRIE
+    uint8_t SPI_RXNEIE;     	// Possible values from @SPI_RXNEIE
+    uint8_t SPI_TXEIE;      	// Possible values from @SPI_TXEIE
+    uint8_t SPI_SSOE;       	// Possible values from @SPI_SSOE
+
 } SPI_Config_t;
 
 /*
@@ -84,6 +91,45 @@ typedef struct
  */
 #define SPI_SSM_EN       1   // Hardware slave management enable
 #define SPI_SSM_DI       0   // Software slave management disable
+
+
+// MACRO defintions related CR2 register
+/*
+ * @SPI_RXDMAEN
+ */
+#define SPI_RXDMAEN_DISABLE    0   // Disable RX DMA
+#define SPI_RXDMAEN_ENABLE     1   // Enable RX DMA
+
+/*
+ * @SPI_TXDMAEN
+ */
+#define SPI_TXDMAEN_DISABLE    0   // Disable TX DMA
+#define SPI_TXDMAEN_ENABLE     1   // Enable TX DMA
+
+/*
+ * @SPI_SSOE
+ */
+#define SPI_SSOE_DISABLE       0   // Disable SS output
+#define SPI_SSOE_ENABLE        1   // Enable SS output
+
+/*
+ * @SPI_ERRIE
+ */
+#define SPI_ERRIE_DISABLE      0   // Disable error interrupt
+#define SPI_ERRIE_ENABLE       1   // Enable error interrupt
+
+/*
+ * @SPI_RXNEIE
+ */
+#define SPI_RXNEIE_DISABLE     0   // Disable RXNE interrupt
+#define SPI_RXNEIE_ENABLE      1   // Enable RXNE interrupt
+
+/*
+ * @SPI_TXEIE
+ */
+#define SPI_TXEIE_DISABLE      0   // Disable TXE interrupt
+#define SPI_TXEIE_ENABLE       1   // Enable TXE interrupt
+
 
 
 /**************************************************************************************************************************
