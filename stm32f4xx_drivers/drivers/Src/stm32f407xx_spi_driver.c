@@ -138,6 +138,8 @@ void SPI_Init(SPI_Handle_t *pSPIHandle)
 	// Copy the configurations into SPI_CR2 register
 	pSPIHandle->pSPIx->CR2 = tempreg;
 
+
+
 }
 
 /***************************************************************************************
@@ -168,6 +170,15 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx)
 
 }
 
+uint8_t SPI_GetFlagStatus(SPI_RegDef_t *pSPIx, uint32_t Flagname)
+{
+	if(pSPIx->SR & Flagname)
+	{
+		return FLAG_SET;
+	}
+	return FLAG_RESET;
+}
+
 
 /***************************************************************************************
  * @fn        - SPI_SendData
@@ -180,11 +191,37 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx)
  *
  * @return    - none
  *
- * @Note      - Used for transmitting data in SPI communication
+ * @Note      - This is blocking call
  ***************************************************************************************/
 void SPI_SendData(SPI_RegDef_t *pSPIx, uint8_t *pTxBuffer, uint32_t Len)
 {
+	while(Len > 0)
+	{
+		//1. wait until TXE is set
+		while( SPI_GetFlagStatus(pSPIx, SPI_TXE_FLAG) == FLAG_RESET );
 
+		if(pSPIx->CR1 & (1 << SPI_CR1_DFF))
+		{
+			//16bit DFF
+			//1. Load DR with 16bytes of data
+			pSPIx->DR = *((uint16_t*)pTxBuffer); // this is same as how we do copy string from one array to another by providing the base address of array
+	        Len--;
+			Len--;
+			(uint16_t*)pTxBuffer++;
+		}
+		else
+		{
+			// 8bit DFF
+			//1. load DR with 1byte of data
+			pSPIx->DR = *pTxBuffer;
+			//2. Increment the buffer address
+			Len--;
+			pTxBuffer++;
+		}
+
+
+
+	}
 }
 
 

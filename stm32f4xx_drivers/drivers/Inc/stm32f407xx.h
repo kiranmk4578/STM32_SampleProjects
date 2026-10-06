@@ -348,6 +348,8 @@ typedef struct
 #define RESET           DISABLE // Alias for disable
 #define GPIO_PIN_SET    1   	// GPIO pin logic high
 #define GPIO_PIN_RESET  0   	// GPIO pin logic low
+#define FLAG_RESET      RESET
+#define FLAG_SET 		SET
 
 /*IRQ(Interrupt Request) Numbers of STM32F407X MCU
 • NOTE: update these macros with valid values according to your
@@ -401,6 +403,19 @@ typedef struct
 #define SPI_CR2_ERRIE      5   // Bit 5: Error interrupt enable
 #define SPI_CR2_RXNEIE     6   // Bit 6: RX buffer not empty interrupt enable
 #define SPI_CR2_TXEIE      7   // Bit 7: TX buffer empty interrupt enable
+
+/*
+ * SPI Status Register (SPI_SR) Bit Positions
+ */
+#define SPI_SR_RXNE       0   // Bit 0: Receive buffer not empty
+#define SPI_SR_TXE        1   // Bit 1: Transmit buffer empty
+#define SPI_SR_CHSIDE     2   // Bit 2: Channel side
+#define SPI_SR_UDR        3   // Bit 3: Underrun flag
+#define SPI_SR_CRCERR     4   // Bit 4: CRC error flag
+#define SPI_SR_MODF       5   // Bit 5: Mode fault flag
+#define SPI_SR_OVR        6   // Bit 6: Overrun flag
+#define SPI_SR_BSY        7   // Bit 7: Busy flag
+#define SPI_SR_FRE        8   // Bit 8: Frame format error
 
 
 

@@ -130,6 +130,12 @@ typedef struct
 #define SPI_TXEIE_DISABLE      0   // Disable TXE interrupt
 #define SPI_TXEIE_ENABLE       1   // Enable TXE interrupt
 
+/*
+ * SPI related status flags definition
+ */
+#define SPI_TXE_FLAG     (1 << SPI_SR_TXE)     // Transmit buffer empty flag
+#define SPI_RXNE_FLAG    (1 << SPI_SR_RXNE)    // Receive buffer not empty flag
+#define SPI_BSY_FLAG     (1 << SPI_SR_BSY)     // SPI busy flag
 
 
 /**************************************************************************************************************************
