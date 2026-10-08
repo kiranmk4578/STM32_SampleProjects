@@ -390,6 +390,8 @@ typedef struct
 #define SPI_CR1_CPOL        1   // Bit 1: Clock polarity
 #define SPI_CR1_MSTR        2   // Bit 2: Master selection
 #define SPI_CR1_BR          3   // Bits 3-5: Baud rate control
+#define SPI_CR1_SPE        	6   // Bit 6: SPI peripheral enable
+#define SPI_CR1_SSI         8   // Bit 8: Internal slave select
 #define SPI_CR1_SSM         9   // Bit 9: Software slave management
 #define SPI_CR1_RXONLY      10  // Bit 10: Receive-only mode
 #define SPI_CR1_DFF         11  // Bit 11: Data frame format

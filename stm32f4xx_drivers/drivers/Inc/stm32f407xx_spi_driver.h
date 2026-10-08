@@ -182,12 +182,9 @@ void SPI_DeInit(SPI_RegDef_t *pSPIx);
 /*
  * Other Peripheral Control APIs
  */
+void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 
-
-
-
-
-
+void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi);
 
 
 

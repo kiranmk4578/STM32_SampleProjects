@@ -15,13 +15,13 @@ void delay(void)
 
 int main(void)
 {
-	GPIO_Handle_t GpioLed;
-	GpioLed.pGPIOx = GPIOD;
-	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;
-	GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
-	GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
-	GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
-	GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+	GPIO_Handle_t GpioLed;                                        // Create a GPIO handle for the LED
+	GpioLed.pGPIOx = GPIOD;                                       // Select GPIO port D or assign GPIOD base address
+	GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_12;       // Configure GPIO pin number 12
+	GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;          // Configure pin as output
+	GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;       // Configure GPIO speed as fast
+	GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;      // Configure output type as push-pull
+	GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;    // Disable internal pull-up and pull-down resistors
 
 	GPIO_PeripheralClockControl(GPIOD,ENABLE);
 

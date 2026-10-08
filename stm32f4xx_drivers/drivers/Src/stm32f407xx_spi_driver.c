@@ -73,6 +73,9 @@ void SPI_Init(SPI_Handle_t *pSPIHandle)
 	// first lets configure the SPI_CR1 register
 	uint32_t tempreg = 0;
 
+	// Enable peripheral clock for the SPI peripheral
+	SPI_PeripheralClockControl(pSPIHandle->pSPIx, ENABLE);
+
 	//1. configure the device mode
 	tempreg |= pSPIHandle->SPIConfig.SPI_DeviceMode << SPI_CR1_MSTR;
 
@@ -112,33 +115,6 @@ void SPI_Init(SPI_Handle_t *pSPIHandle)
 
 	//Copy the configurations into SPI_CR1 register
 	pSPIHandle->pSPIx->CR1 = tempreg;
-
-	// Lets configure the SPI_CR2 register
-	//clear tempreg
-	tempreg = 0;
-
-	// 8. Configure RX DMA
-	tempreg |= pSPIHandle->SPIConfig.SPI_RXDMAEN << SPI_CR2_RXDMAEN;
-
-	// 9. Configure TX DMA
-	tempreg |= pSPIHandle->SPIConfig.SPI_TXDMAEN << SPI_CR2_TXDMAEN;
-
-	// 10. Configure SS output enable
-	tempreg |= pSPIHandle->SPIConfig.SPI_SSOE << SPI_CR2_SSOE;
-
-	// 11. Configure error interrupt
-	tempreg |= pSPIHandle->SPIConfig.SPI_ERRIE << SPI_CR2_ERRIE;
-
-	// 12. Configure RXNE interrupt
-	tempreg |= pSPIHandle->SPIConfig.SPI_RXNEIE << SPI_CR2_RXNEIE;
-
-	// 13. Configure TXE interrupt
-	tempreg |= pSPIHandle->SPIConfig.SPI_TXEIE << SPI_CR2_TXEIE;
-
-	// Copy the configurations into SPI_CR2 register
-	pSPIHandle->pSPIx->CR2 = tempreg;
-
-
 
 }
 
@@ -297,6 +273,42 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle)
 
 }
 
+/****************************************************************************************************
+ * @fn        - SPI_PeripheralControl
+ *
+ * @brief     - Enables or disables the selected SPI peripheral
+ *
+ * @param[in] - pSPIx  : Pointer to the SPI peripheral register structure
+ * @param[in] - EnorDi : Enable or disable the SPI peripheral
+ *
+ * @return    - None
+ *
+ * @Note      - Controls the SPI peripheral enable (SPE) bit in the CR1 register
+ ****************************************************************************************************/
+void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
+{
+    if(EnorDi == ENABLE)
+    {
+        pSPIx->CR1 |= 1 << SPI_CR1_SPE;
+    }
+    else
+    {
+        pSPIx->CR1 &= ~(1 << SPI_CR1_SPE);
+    }
+}
+
+
+void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
+{
+    if(EnorDi == ENABLE)
+    {
+        pSPIx->CR1 |= 1 << SPI_CR1_SSI;
+    }
+    else
+    {
+        pSPIx->CR1 &= ~(1 << SPI_CR1_SSI);
+    }
+}
 
 
 

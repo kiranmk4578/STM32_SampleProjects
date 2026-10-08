@@ -93,6 +93,9 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 {
 	uint32_t temp=0; //temp. register
 
+	//Enable the GPIO peripheral clock
+	GPIO_PeripheralClockControl(pGPIOHandle->pGPIOx,ENABLE);
+
 	//1. configure the mode of gpio pin
 	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG)
 	{
@@ -159,7 +162,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 		pGPIOHandle->pGPIOx->OTYPER |= temp;
 
 	//5. configure the alt functionality
-		if(pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode == GPIO_MODE_ALTFN)
+		if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_ALTFN)
 		{
 			    // Configure the alternate function registers
 			    uint8_t temp1, temp2;
