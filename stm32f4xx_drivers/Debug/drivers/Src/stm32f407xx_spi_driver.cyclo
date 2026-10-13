@@ -8,4 +8,5 @@
 ../drivers/Src/stm32f407xx_spi_driver.c:253:6:SPI_IRQPriorityConfig	1
 ../drivers/Src/stm32f407xx_spi_driver.c:271:6:SPI_IRQHandling	1
 ../drivers/Src/stm32f407xx_spi_driver.c:288:6:SPI_PeripheralControl	2
-../drivers/Src/stm32f407xx_spi_driver.c:301:6:SPI_SSIConfig	2
+../drivers/Src/stm32f407xx_spi_driver.c:316:6:SPI_SSIConfig	2
+../drivers/Src/stm32f407xx_spi_driver.c:342:6:SPI_SSOEConfig	2

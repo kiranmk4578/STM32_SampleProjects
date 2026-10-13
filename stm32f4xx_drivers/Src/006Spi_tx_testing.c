@@ -89,7 +89,11 @@ int main(void)
 	// Send data through SPI1
 	SPI_SendData(SPI1, (uint8_t*)user_data, strlen(user_data));
 
-	while(1);
+	//Lets confirm SPI is not BUSY
+	while( SPI_GetFlagStatus(SPI1, SPI_SR_BSY) );
+
+	// Disable SPI1 peripheral
+	SPI_PeripheralControl(SPI1, DISABLE);
 
 	return 0;
 }

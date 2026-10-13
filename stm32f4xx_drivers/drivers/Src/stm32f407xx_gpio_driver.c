@@ -168,14 +168,14 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 			    uint8_t temp1, temp2;
 
 			    // Each AFR register covers 8 pins (AFR[0] for pins 0–7, AFR[1] for pins 8–15)
-			    temp1 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 8;
-			    temp2 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 8;
+			    temp1 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 8;  // Select AFR register: 0 = AFRL, 1 = AFRH
+			    temp2 = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 8;  // Select the 4-bit AF field within the selected AFR register
 			    pGPIOHandle->pGPIOx->AFR[temp1] &= ~(0xF << ( 4 * temp2 ) ); //clearing 4 specific bits
 			    pGPIOHandle->pGPIOx->AFR[temp1] |=(pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << ( 4 * temp2 ) );
 		 }
 
 
-}
+} // execution was directly reaching at this point directly
 
 /***************************************************************
  * @fn        - GPIO_DeInit

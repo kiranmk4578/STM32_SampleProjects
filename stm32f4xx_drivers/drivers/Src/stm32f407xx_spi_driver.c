@@ -298,17 +298,60 @@ void SPI_PeripheralControl(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
 }
 
 
+/*********************************************************************
+
+* @fn        - SPI_SSIConfig
+*
+* @brief     - Enables or disables software slave management internal
+*              select (SSI)
+*
+* @param[in] - pSPIx  : Pointer to the SPI peripheral register structure
+* @param[in] - EnorDi : Enable or disable SSI
+*
+* @return    - None
+*
+* @Note      - Controls the SSI bit in the CR1 register
+  *********************************************************************/
+
 void SPI_SSIConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
 {
-    if(EnorDi == ENABLE)
-    {
-        pSPIx->CR1 |= 1 << SPI_CR1_SSI;
-    }
-    else
-    {
-        pSPIx->CR1 &= ~(1 << SPI_CR1_SSI);
-    }
+if(EnorDi == ENABLE)
+{
+pSPIx->CR1 |= 1 << SPI_CR1_SSI;
 }
+else
+{
+pSPIx->CR1 &= ~(1 << SPI_CR1_SSI);
+}
+}
+
+/*********************************************************************
+
+* @fn        - SPI_SSOEConfig
+*
+* @brief     - Enables or disables the SPI slave select output
+*
+* @param[in] - pSPIx  : Pointer to the SPI peripheral register structure
+* @param[in] - EnorDi : Enable or disable SSOE
+*
+* @return    - None
+*
+* @Note      - Controls the SSOE bit in the CR2 register
+  *********************************************************************/
+
+void SPI_SSOEConfig(SPI_RegDef_t *pSPIx, uint8_t EnorDi)
+{
+if(EnorDi == ENABLE)
+{
+pSPIx->CR2 |= 1 << SPI_CR2_SSOE;
+}
+else
+{
+pSPIx->CR2 &= ~(1 << SPI_CR2_SSOE);
+}
+}
+
+
 
 
 
